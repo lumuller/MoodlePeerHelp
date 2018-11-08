@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich=" http://richfaces.org/rich">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Moodle Peer Help</title>
+</h:head>
+<h:body>
+    <div id="container">
+        <h:form>
+            <div id="header">
+                    <h1>Moodle<span class="off"> Peer Help</span></h1>            
+            </div>        
+            <div id="menu">
+                <ul>
+                    <li class="menuitem"><a href="#">Sobre</a></li>                
+                    <li class="menuitem"><a href="contato.xhtml">Contato</a></li>
+                </ul>
+            </div>   
+            <div id="leftmenu">
+                
+            </div>        
+            <div id="content">
+                <div id="content_top"></div>
+                <div id="content_main">                       
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h3><h:messages errorStyle="color: red" infoStyle="color: green" layout="table" /></h3>
+                    </h:panelGroup>
+                    <table border="0" cellpadding="2" cellspacing="2">      
+                        <tr>
+                            <td><h:outputLabel value="Nome de usuário:" for="idUsuarios" /></td>
+                            <td><h:inputText value="#{loginBean.name}" id="idUsuarios" /></td>
+                        </tr>     
+                        <tr>
+                            <td><h:outputLabel value="Senha:" for="senha" /></td>
+                            <td><h:inputSecret value="#{loginBean.senha}" id="senha" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <br />                                
+                                <h:commandButton value="Efetuar Login" action="#{loginBean.login}" />
+                            </td>
+                            <td>
+                                <h:link outcome="/aviso" value="Cadastrar novo usuário" />
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>  
+                <div id="content_bottom"></div>            
+                <div id="footer"></div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

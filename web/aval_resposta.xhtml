@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich=" http://richfaces.org/rich">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Moodle Peer Help</title>
+</h:head>
+<h:body>
+    <div id="container">
+        <h:form>
+            <div id="header">
+                    <h1>Moodle<span class="off"> Peer Help</span></h1>            
+            </div>        
+            <div id="menu">
+                <ul>
+                    <li class="menuitem"><a href="index.xhtml">Home</a></li>
+                    <li class="menuitem"><a href="#">Sobre</a></li>                
+                    <li class="menuitem"><a href="contato.xhtml">Contato</a></li>
+                    <li class="menuitem"><h:commandLink value="Sair" action="#{loginBean.logout}" immediate="true" /></li>
+                </ul>
+            </div>
+            <div id="leftmenu">
+                <div id="leftmenu_top"></div>
+                <div id="leftmenu_main"> 
+                    <h3></h3>
+                    <ul>
+                        <li><a href="cad_recursosusuarios.xhtml">Meu Moodle</a></li>
+                        <li><a href="cad_duvidas.xhtml">Cadastro de dúvidas</a></li>
+                        <li><a href="faq.xhtml">FAQ</a></li>
+                    </ul>
+                </div>               
+                <div id="leftmenu_bottom"></div>
+            </div>        
+            <div id="content">
+                <div id="content_top"></div>
+                <div id="content_main">   
+                    <h2><h:outputText value="#{bundle.ListTRespostasTitle}" /></h2>
+                    <br />
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h3><h:messages errorStyle="color: red" infoStyle="color: green" layout="table" /></h3>
+                    </h:panelGroup>
+                    <table border="0" cellpadding="2" cellspacing="2" width="600">
+                        <tr>
+                            <td width="120"><h:outputLabel value="#{bundle.EditTDuvidasLabel_duvida}" for="duvida" /></td>
+                            <td><h:outputText id="duvida" value="#{tDuvidasController.selected.duvida}" title="#{bundle.EditTDuvidasTitle_duvida}"  /></td>
+                        </tr>                      
+                        <tr>                            
+                            <td><h:outputLabel value="#{bundle.EditTDuvidasLabel_idRecurso}" for="idRecurso" /></td>
+                            <td><h:outputText id="idRecurso" value="#{tDuvidasController.selected.idRecurso.nome}" title="#{bundle.EditTDuvidasTitle_idRecurso}" /></td>
+                        </tr>
+                        <tr>                            
+                            <td><h:outputLabel value="#{bundle.EditTDuvidasLabel_resposta}" for="resposta" /></td>
+                            <td><h:outputText value="#{tDuvidasController.selected.resposta}" title="#{bundle.ViewTDuvidasTitle_resposta}" /></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputText value="#{bundle.ViewTDuvidasLabel_isQualificada}" title="#{bundle.ViewTDuvidasTitle_isQualificada}" /></td>
+                            <td>
+                                 <h:selectOneMenu id="isQualificada" value="#{tDuvidasController.selected.isQualificada}" >
+                                    <f:selectItem itemLabel="Sim" itemValue="S" />
+                                    <f:selectItem itemLabel="Não" itemValue="N" />
+                                </h:selectOneMenu> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">     Ao avaliar negativamente a respostas dada, a sua pergunta será encaminhada à outro usuário.</td>    
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />                                
+                                <h:commandButton action="#{tDuvidasController.updateQualificacao}" value="#{bundle.EditTDuvidasSaveLink}"  onclick="return confirm('Confirma ?');"/>
+                            </td>
+                        </tr>
+                    </table>                    
+                </div>  
+                <div id="content_bottom"></div>            
+                <div id="footer"></div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>
